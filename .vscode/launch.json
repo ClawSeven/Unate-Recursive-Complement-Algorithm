@@ -1,0 +1,72 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    {
+    "name": "(gdb) Launch",
+    "type": "cppdbg",
+    "request": "launch",
+    "program": "${workspaceFolder}/main",
+    "args": ["test2.in","litest2.out"],
+    "stopAtEntry": false,
+    //"cwd": "${workspaceFolder}",
+    "cwd": "${workspaceFolder}",
+    "environment": [],
+    "externalConsole": true,
+    "preLaunchTask": "main",
+    // "linux": {
+    // "MIMode": "gdb"
+    // },
+    // "osx": {
+    // "MIMode": "lldb"
+    // },
+    "linux": {
+
+        "MIMode": "gdb",     //for inspecting vector changes
+
+        "setupCommands": [
+
+            { "text": "-enable-pretty-printing", "description": "enable pretty printing", "ignoreFailures": true },
+
+            { "text": "handle SIGPIPE nostop noprint pass", "description": "ignore SIGPIPE", "ignoreFailures": true }  
+        ]
+    },
+    "windows": {
+    "MIMode": "gdb",
+    "setupCommands": [
+    {
+    "description": "Enable pretty-printing for gdb",
+    "text": "-enable-pretty-printing",
+    "ignoreFailures": true
+    }
+    ]
+    },
+    "pipeTransport": {
+    "pipeCwd": "",
+    "pipeProgram": "bash",//"C:\\Windows\\System32\\bash.exe",
+    "pipeArgs": ["-c"],
+    "debuggerPath": "/usr/bin/gdb"
+    },
+    "sourceFileMap": {
+    "/mnt/c": "C:\\",
+    "/usr": "${env:LOCALAPPDATA}\\Packages\\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\\LocalState\\rootfs\\usr",
+    
+    }
+    }
+    // {
+    // "name": "C++ Attach",
+    // "type": "cppdbg",
+    // "request": "attach",
+    // "program": "${workspaceRoot}/build",
+    // "processId": "${command:pickProcess}",
+    // "linux": {
+    // "MIMode": "gdb"
+    // },
+    // "osx": {
+    // "MIMode": "lldb"
+    // },
+    // "windows": {
+    // "MIMode": "gdb"
+    // }
+    // }
+    ]
+    }
